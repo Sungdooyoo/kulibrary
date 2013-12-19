@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<script>
+			var StpPntcntr = 1; 
+			var StpPnts = new Array();
+			var Questions = new Array();
+			var Answers =  new Array();
+
+			function addStpPnt(divName){
+				frm = document.forms[0]; 
+				newInput = frm.elements[1+3*(StpPntcntr-1)].value;
+				document.getElementById("arrays").value = StpPntcntr;
+
+
+
+						if(StpPntcntr == 1 && isNaN(newInput) == false){
+							StpPnts.push(newInput);
+							var newdiv = document.createElement('div');
+						          newdiv.innerHTML = "멈출 곳 " + (StpPntcntr + 1) + ":" + "<input type='text'" + "name = 'stp" + (StpPntcntr + 1) + "'" + 
+						          ' onchange="'+'addStpPnt(' + "'StpPnt'" +')"'  +">" + "<br>"
+						         	+ "질문" +(StpPntcntr + 1)+":"  +   '<textarea  name=' + "'"+ 'question' + (StpPntcntr + 1) +"'" +
+						        	 ' onchange="'+'addQuestion(' + "this" +')"'+" form='input'> </textarea>" + "<br>"
+						          	+ "정답" +(StpPntcntr + 1)+":"  +   '<input  name=' + "'"+ 'answer' + (StpPntcntr + 1) +"'" +  
+						          	' onchange="'+'addAnswer(' + "this" +')"' +">" + "<br>";
+						          document.getElementById(divName).appendChild(newdiv);
+						          StpPntcntr++;
+							
+						}
+						else if(isNaN(newInput))
+						{
+							alert("Type in Integer!");
+							frm.elements[1+3*(StpPntcntr-1)].value = null;
+						}
+						else
+						{
+							var tmExist = false;
+							for(var i=0; i<StpPnts.length; i++)
+								{
+									if(newInput == StpPnts[i])
+									{
+										tmExist = true;
+										
+									}
+								}
+							if(tmExist)
+							{	
+								
+								alert("Quiz for that Time already Exist!");
+								frm.elements[1+3*(StpPntcntr-1)].value = null;
+							}
+							else if(isNaN(newInput))
+							{
+								alert("Type in Integer!");
+								frm.elements[1+3*(StpPntcntr-1)].value = null;
+							}
+							
+							else
+							{
+								StpPnts.push(newInput);
+							var newdiv = document.createElement('div');
+						          newdiv.innerHTML = "멈출 곳 " + (StpPntcntr + 1) + ":" + "<input type='text'" + "name = 'stp" + (StpPntcntr + 1) + "'" + 
+						          ' onchange="'+'addStpPnt(' + "'StpPnt'" +')"'  +">" + "<br>"
+						         	+ "질문" +(StpPntcntr + 1)+":"  +  '<textarea  name=' + "'"+ 'question' + (StpPntcntr + 1) +"'" +
+						        	 ' onchange="'+'addQuestion(' + "this" +')"'+" form='input'> </textarea>" + "<br>"
+						          	+ "정답" +(StpPntcntr + 1)+":"  +   '<input  name=' + "'"+ 'answer' + (StpPntcntr + 1) +"'" +  
+						          	' onchange="'+'addAnswer(' + "this" +')"' +">" + "<br>";
+						          document.getElementById(divName).appendChild(newdiv);
+						          StpPntcntr++;
+							
+
+							}
+						}
+
+
+			}
+			
+			function addQuestion(inpt){
+				/*Questions[inpt-1]=  frm.element[2+3*(inpt -1)].value;*/
+				var text = inpt.value;
+				
+				text = text.replace(/\r?\n/g, '<br />');
+								inpt.value = text;
+				}
+			
+		</script>
+	</head>
+	<body>
+		
+		<form action="popvideo.php" method="post" id="input" >
+			비디오 주소: <input name= "videosrc" autocomplete="on" autofocus="autofocus">
+			<br> 
+			<div id="StpPnt" >
+			멈출 곳 1:  <input name="stp1" onchange="addStpPnt('StpPnt')" autocomplete="on"><br />
+		
+			질문1: <textarea  name="question1" onchange="addQuestion(this)" autocomplete="on" form="input" id="textarea"/> </textarea>
+			
+			<br />
+			정답: <input name="answer1" autocomplete="on"/>
+				</div>
+			<br>
+			<input type="hidden" id="arrays" name="arrays" value="" />
+			<input type="submit">
+		</form>
+		
+	</body>
+	
+</html>
