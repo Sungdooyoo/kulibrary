@@ -61,6 +61,11 @@ else
   echo $_FILES["file"]["type"].'type';
   
   }
+  
+echo $_FILES["file"];
+echo $_FILES["file"]["name"];
+echo $_FILES["file"]["type"];
+echo $_FILES["file"]["tmp_name"];
 ?> 
 <html>
 	<script>
