@@ -59,6 +59,10 @@ else
   {
   echo "올바르지 않은 형식입니다. 홈페이지로 다시 이동합니다";
   echo $_FILES["file"]["type"];
+   echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+  
   }
 ?> 
 <html>
