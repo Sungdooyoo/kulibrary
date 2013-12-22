@@ -49,7 +49,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
   else
     {
     move_uploaded_file($_FILES["file"]["tmp_name"],
-         "/var/www/library/upload/" . $_FILES["file"]["name"]);
+         "upload/" . $_FILES["file"]["name"]);
 
 	
    
