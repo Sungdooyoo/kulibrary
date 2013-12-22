@@ -62,7 +62,7 @@ else
 ?> 
 <html>
 	<script>
-		window.location = "http://www.konkukphilosophy.com/"
+	
 	</script>
 	<h1>감사합니다!!</h1>
 	<p>멋진 철학과 도서관으로 보답하겠습니다!!</p>
