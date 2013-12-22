@@ -49,7 +49,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
   else
     {
     move_uploaded_file($_FILES["file"]["tmp_name"],
-         "upload/" . $_FILES["file"]["name"]);
+         "/var/www/library/upload/" . $_FILES["file"]["name"]);
 
 	
    
@@ -59,9 +59,6 @@ else
   {
   echo "올바르지 않은 형식입니다. 홈페이지로 다시 이동합니다";
   echo $_FILES["file"]["type"];
-   echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
   
   }
 ?> 
